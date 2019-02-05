@@ -61,4 +61,7 @@ export class AppComponent implements AfterViewInit {
     });
   }
 
+  protected onImageClick(courseName: string) {
+    console.log(`====> ${courseName} - onImageClick()... <course-card-image> component is a projected content into <course-card> component...`);
+  }
 }

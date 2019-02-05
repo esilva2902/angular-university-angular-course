@@ -33,7 +33,12 @@
         [class.is-odd]="isOdd"
         (selectedCourse)="onSelectedCourse($event)">
     
-        <course-card-image [src]="course.iconUrl" [course-name]="course.description" [no-image-tpl]="blankImage"></course-card-image>
+        <course-card-image 
+            [src]="course.iconUrl" 
+            [course-name]="course.description" 
+            [no-image-tpl]="blankImage"
+            (click)="onImageClick(course.description)"
+            [ngStyle]="{'cursor': 'pointer'}"></course-card-image>
     </course-card>
 </div>
 
