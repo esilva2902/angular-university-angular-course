@@ -6,24 +6,29 @@
 
 </div>
 
+<div class="green-theme">
+    <div class="course-card">
+        Test Card
+    </div>
 
+    <!-- <div _nghost-c1>
+        <div _ngcontent-c1 class="course-card">Example</div>
+    </div> -->
 
-<div class="courses" *ngIf="courses[0] as course">
+    <div class="courses" *ngIf="courses[0] as course">
 
-    <course-card [highlighted]="false" (toggleHighlight)="onToggleHighlight($event)" #highlighter="hl"
-            (courseSelected)="onCourseSelected($event)"
-                 [course]="course">
+        <course-card [highlighted]="false" (toggleHighlight)="onToggleHighlight($event)" #highlighter="hl"
+                (courseSelected)="onCourseSelected($event)"
+                    [course]="course">
 
-        <course-image [src]="course.iconUrl" *ngxUnless="course.iconUrl"></course-image>
+            <course-image [src]="course.iconUrl" *ngxUnless="!course.iconUrl"></course-image>
 
-        <div class="course-description"
-            (dblclick)="highlighter.toggle()">
-            {{ course.longDescription }}
-        </div>
+            <div class="course-description"
+                (dblclick)="highlighter.toggle()">
+                {{ course.longDescription }}
+            </div>
 
-    </course-card>
-
-
+        </course-card>
+    </div>
 </div>
-
 

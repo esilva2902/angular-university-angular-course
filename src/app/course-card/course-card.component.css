@@ -1,6 +1,124 @@
+/**
+ * Viewencapsulation:
+ *
+ * When we want to apply some styles to the component itself 
+ * we have to use the :host keyword which is transform to an attribute
+ * that identifies the component in the final HTML file.
+ *
+ * Remeber: If we want to apply styles outside the component to the component itself
+ *          we use the selector to identify it e.g. 
+ *
+ *       course-card {
+ *         display: block;
+ *       }
+ *
+ * But inside the style sheet which belongs to the component we cannot reference via its selector
+ * then we have to use :host keyword.
+ */
+:host {
+    display: block;
+}
+
+:host.is-first {
+    border-top: 2px solid grey;
+    padding-top: 20px;
+}
+
+:host.is-last {
+    border-bottom: 2px solid grey;
+    padding-top: 20px;
+}
+
+:host.is-even {
+    background: lightgray;
+}
+
+
+:host.is-odd {
+    background: lightcyan;
+}
 
 .course-card.beginner {
     background: lightsalmon;
 }
 
+/**
+ * If you need to apply certain styles according to external class (a theme) yo can 
+ * use :host-context.
+ *
+ * :host-context will create a descendant selector. For instance, for the given course-card class
+ * it will create the following selector:
+ *
+ *  .green-theme[_nghost-c1]   .course-card[_ngcontent-c1], .green-theme   [_nghost-c1]   .course-card[_ngcontent-c1] {
+ *    background: lightgreen;
+ *  }
+ * 
+ * The second selector will apply to all elements which have course-card class and have _ngcontent-c1 attribute. Since 
+ * it is a descendant selector elements must be children of elements with _nghost-c1 attribute it means all the elements
+ * which belong to the component itself.
+ * The component could have either green-theme class applied or could be a child 
+ * of an element which has the green-theme class.
+ * 
+ */
+:host-context(.green-theme) .course-card {
+    background: lightgreen;
+}
+
+.course-card {
+	margin-bottom: 40px;
+	text-align: center;
+	border-radius: 4px;
+	padding: 20px 0;
+	box-shadow: 0 1px 16px 0 rgba(0, 0, 0, .2), 0 2px 8px 0 rgba(0, 0, 0, .14), 0 4px 8px -1px rgba(0, 0, 0, .12);
+}
+
+.course-card .course-title {
+	font-size: 27px;
+	font-weight: bold;
+}
+
+/**
+ * Since course-description style is apply to a div which is provided to course-card 
+ * component via content projection that div is considered part of an app component (the parent of course-card component).
+ *
+ * Due to the div is part of the content of course-card component the best practice is to apply
+ * styles in the style sheet which belongs to course-card component. Therefore, in order to apply the 
+ * correct styles we use ::ng-deep keyword. 
+ *
+ * Appliying ::ng-deep will get rid of the attribute angular adds
+ * to every style that belongs to the course-card component itself. 
+ *
+ * Remember Angular adds all the styles inside <head> tag. 
+ * 
+ * Before applying ::ng-deep .course-description style looks like this:
+ *
+ *   .course-card[_ngcontent-c1] .course-description[_ngcontent-c1] {
+ *       max-width: 200px;
+ *       margin: 0 auto;
+ *       margin-top: 15px;
+ *       -webkit-user-select: none;
+ *       -moz-user-select: none;
+ *           -ms-user-select: none;
+ *               user-select: none;
+ *       }
+ *
+ * After applying ::ng-deep .course-description style looks like this:
+ *   
+ *    .course-card[_ngcontent-c1] .course-description {
+ *       max-width: 200px;
+ *       margin: 0 auto;
+ *       margin-top: 15px;
+ *       -webkit-user-select: none;
+ *       -moz-user-select: none;
+ *           -ms-user-select: none;
+ *               user-select: none;
+ *       }
+ */
+
+.course-card ::ng-deep .course-description {
+    max-width: 200px;
+    margin: 0 auto;
+    margin-top: 15px;
+    user-select: none;
+}
 
