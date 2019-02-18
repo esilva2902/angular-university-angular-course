@@ -28,7 +28,10 @@ import { Course } from '../model/course';
 export class CoursesService {
 
   constructor(
-    private http: HttpClient) { }
+    private http: HttpClient) { 
+
+      console.log(`==> A new CoursesService instance was created...`);
+  }
 
   public loadCourses(): Observable<Course[]> {
     const params = new HttpParams()
