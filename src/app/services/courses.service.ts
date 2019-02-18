@@ -4,6 +4,26 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Course } from '../model/course';
 
+/**
+ * There are two types of injecting services:
+ *    (a). Via providers property @Component. Use this form of providing your services
+ *         if your services guard variables states per components.
+ * 
+ *    (b). Via Tree-Shakeable providers. Use this way of providing your services if you need a 
+ *         Singleton instance. It resolves in smaller application bundles and better
+ *         runtime performance because if the app does not inject the services anywhere the app will not
+ *         include in the final bundle.
+ */
+
+
+/**
+ * When you add to your service class the @Injectable decorator
+ * with providedIn: 'root' property is called Tree-Shakeable provider:
+ * 
+ * @Injectable({ providedIn: 'root' })
+ * export class CourseService { ... }
+ * 
+ */
 @Injectable()
 export class CoursesService {
 
