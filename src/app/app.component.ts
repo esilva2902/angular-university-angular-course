@@ -17,7 +17,7 @@ import { CONFIG_TOKEN, APP_CONFIG } from './config';
  *    dependencies they must be provided by deps property
  *    in the configuration object passed to the providers array.
  */
-function coursesServiceProvider(http: HttpClient): CoursesService {
+export function coursesServiceProvider(http: HttpClient): CoursesService {
   return new CoursesService(http);
 }
 
@@ -26,7 +26,7 @@ function coursesServiceProvider(http: HttpClient): CoursesService {
  *    Injection Token. Define it in order to identify our CoursesService 
  *    service class.
  */
-const COURSES_SERVICE = new InjectionToken<CoursesService>('COURSES_SERVICE');
+export const COURSES_SERVICE = new InjectionToken<CoursesService>('COURSES_SERVICE');
 
 @Component({
   selector: 'app-root',

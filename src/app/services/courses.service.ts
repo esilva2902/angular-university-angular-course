@@ -24,13 +24,23 @@ import { Course } from '../model/course';
  * export class CourseService { ... }
  * 
  */
+
+let courseNumberInstance = 0;
+
 @Injectable()
 export class CoursesService {
 
+  private instance: number;
+
   constructor(
     private http: HttpClient) { 
+      this.instance = courseNumberInstance++;
 
-      console.log(`==> A new CoursesService instance was created...`);
+      console.log(`==> A new CoursesService instance was created (${this.instance})...`);
+  }
+
+  public get InstanceNumber(): number {
+    return this.instance;
   }
 
   public loadCourses(): Observable<Course[]> {
