@@ -10,8 +10,7 @@ import { Directive, HostBinding, Input, HostListener, Output, EventEmitter } fro
 })
 export class HighlightedDirective {
 
-  @Input('highlighted')
-  private isHighlighted = false;
+  @Input('highlighted') isHighlighted = false;
 
   @Output() toggleHighlight = new EventEmitter();
 
@@ -20,7 +19,8 @@ export class HighlightedDirective {
   }
 
   /**
-   * @HostBinding is used to apply DOM properties:
+   * @HostBinding is used to modify DOM properties or add
+   * specific classes.
    */
   @HostBinding('class.highlighted')
   get cssClasses() {
@@ -43,7 +43,7 @@ export class HighlightedDirective {
   // }
 
   /**
-   * We can also use @HostBinding to add DOM
+   * We can also use @HostBinding to add or set DOM
    * attributes:
    */
   @HostBinding('attr.disabled')
