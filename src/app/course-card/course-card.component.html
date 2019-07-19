@@ -13,11 +13,11 @@
       <p>No image available</p>
     </ng-template> -->
 
-    <ng-content select="course-card-image"></ng-content>
-
     <div class="course-description">
         {{ course.longDescription }}
     </div>
+
+    <ng-content select="course-card-image"></ng-content>
 
     <div class="course-category" [ngSwitch]="course.category">
       <div class="category" *ngSwitchCase="'BEGINNER'">Beginner</div>

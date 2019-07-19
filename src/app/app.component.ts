@@ -35,7 +35,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log(`====> ngAfterViewInit()`);
+    console.log(`****** AppComponent ******* START ====> ngAfterViewInit()`);
     console.log(`cards (CourseCardComponent): `, this.cards);
     console.log(`cardsRef: `, this.cardsRef);
     
@@ -47,7 +47,7 @@ export class AppComponent implements AfterViewInit {
       console.log(`cardsRef.changes: `, set);
     });
 
-    console.log(`====> ngAfterViewInit()`);
+    console.log(`****** AppComponent ******* END ====> ngAfterViewInit()`);
   }
 
   protected onAddCourse() {

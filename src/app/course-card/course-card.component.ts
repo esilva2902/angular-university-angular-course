@@ -5,7 +5,8 @@ import {
   Output, 
   EventEmitter, 
   AfterContentInit,
-  ContentChild
+  ContentChild,
+  AfterViewInit
 
 } from '@angular/core';
 
@@ -18,7 +19,7 @@ import { CourseCardImageComponent } from '../course-card-image/course-card-image
   templateUrl: './course-card.component.html',
   styleUrls: ['./course-card.component.css']
 })
-export class CourseCardComponent implements OnInit, AfterContentInit {
+export class CourseCardComponent implements OnInit, AfterContentInit, AfterViewInit {
 
   @Input('course')
   course: Course;
@@ -41,10 +42,14 @@ export class CourseCardComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
-    console.log(`====> ngAfterContentInit()`);
-    console.log(`Images (CourseCardImageComponent): `, this.image);
+    console.log(`CourseCardComponent(${this.index}) START ====> ngAfterContentInit()`);
+    console.log(`Image (CourseCardImageComponent): `, this.image);
 
-    console.log(`====> ngAfterContentInit()`);
+    console.log(`CourseCardComponent(${this.index}) END ====> ngAfterContentInit()`);
+  }
+
+  ngAfterViewInit() {
+    console.log(`CourseCardComponent(${this.index}) ====> ngAfterViewInit()`);
   }
 
   onViewCourse() {
